@@ -2,7 +2,9 @@ const path = require("path");
 const fs = require("fs").promises;
 
 async function _sd_main(arg) {
-  const promptPath = path.join(__dirname, "../system_prompt.txt");
+  const promptPath = arg?.filePath
+    ? path.resolve(arg.filePath)
+    : path.join(__dirname, "../system_prompt.txt");
 
   let fileSystemPrompt = "";
   try {
